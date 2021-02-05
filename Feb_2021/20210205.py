@@ -12,7 +12,6 @@ class Solution:
         valWealth = -inf
         for l in accounts:
             sumWealth = sum(l)
-            # print(sumWealth)
             if sumWealth > valWealth:
                 valWealth = sumWealth
 
