@@ -21,3 +21,19 @@ class Solution:
                 matchesCount += (n - 1) / 2
                 n = (n - 1) / 2 + 1
         return int(matchesCount + 1)
+
+
+# SOLUTION 2
+class Solution:
+    def numberOfMatches(self, n: int) -> int:
+        matchesCount = 0
+        if n == 1:
+            return matchesCount
+        if n ==2:
+            return matchesCount +1
+        if n%2 ==0:
+            matchesCount += n/2
+            return int(self.numberOfMatches(n/2) + matchesCount)
+        else:
+            matchesCount += (n - 1) / 2
+            return int(self.numberOfMatches((n - 1) / 2 + 1) + matchesCount)
