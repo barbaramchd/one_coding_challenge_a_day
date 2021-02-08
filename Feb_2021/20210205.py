@@ -11,7 +11,7 @@ class Solution:
     def maximumWealth(self, accounts: List[List[int]]) -> int:
         valWealth = -inf
         for l in accounts:
-            sumWealth = sum(l)
+            sumWealth = sum(l) # customer's wealth is the sum of all of his accounts
             if sumWealth > valWealth:
                 valWealth = sumWealth
 

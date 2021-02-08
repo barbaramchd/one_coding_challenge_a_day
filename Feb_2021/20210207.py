@@ -15,3 +15,13 @@ class Solution:
             list_alt.append(current_alt)
 
         return max(list_alt)
+
+# SOLUTION 2
+class Solution:
+    def largestAltitude(self, gain: List[int]) -> int:
+        list_alt = [0] # list to store altitudes
+        for i in range(len(gain)):
+            # adding the difference of altitudes to the previous altitude
+            list_alt.append(gain[i] + list_alt[-1])
+
+        return max(list_alt)
