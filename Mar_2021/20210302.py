@@ -25,4 +25,5 @@ class Solution:
                 reversed_list = left_side + list(S[character]) + right_side
 
         # join every element of the reversed_list
+        # we used "" because join work with string as object
         return "".join(reversed_list)
