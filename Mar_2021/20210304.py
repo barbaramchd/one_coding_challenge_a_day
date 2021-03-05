@@ -3,8 +3,6 @@
 Given the root of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).
 
 """
-
-
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -40,14 +38,17 @@ class Solution:
                 else:
                     children2.append(TreeNode(val="😎"))
 
-            print(is_level_symmetric(children2))
+            # print(is_level_symmetric(children2))
 
             if is_level_symmetric(children2) == False:
                 return False
             if has_children == False:
                 return True
             else:
-                children = children2.copy()
+                children = []
+                for c in range(len(children2)):
+                    if children2[c].val != "😎":
+                        children.append(children2[c])
                 children2 = []
 
 
