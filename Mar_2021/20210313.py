@@ -40,7 +40,6 @@ class Solution:
         roman = ""
         for key in dict_roman:
             if num >= key:
-                result = dict_roman[key] * (num // key)
-                roman += result
+                roman += dict_roman[key] * (num // key)
                 num = num - (key* (num // key))
         return roman
