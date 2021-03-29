@@ -1,3 +1,21 @@
+class Literal:
+    def __init__(self, name, sign=True):
+        self.name = name
+        self.sign = sign
+
+    def __neg__(self):
+        return (Literal(self.name, sign=not self.sign))
+
+    def __eq__(self, other):
+        return self.name == other.name
+
+    def __hash__(self):
+        return hash(self.name)
+
+    def __repr__(self):
+        return self.name
+
+
 def clause_evaluation(clause, sat_model):
     for symbol in clause:
         if not (symbol.sign ^ sat_model[symbol]) == True:
