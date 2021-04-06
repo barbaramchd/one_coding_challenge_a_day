@@ -8,6 +8,16 @@ The number of local inversions is the number of i with 0 <= i < N and A[i] > A[i
 
 Return true if and only if the number of global inversions is equal to the number of local inversions.
 """
+# SOLUTION 1: Faster
+class Solution:
+    def isIdealPermutation(self, A: List[int]) -> bool:
+
+        for i in range(len(A)):
+            if abs(A[i] - i) > 1:
+                return False
+        return True
+
+# SOLUTION 2
 class Solution:
     def isIdealPermutation(self, A: List[int]) -> bool:
         local_inv = 0
