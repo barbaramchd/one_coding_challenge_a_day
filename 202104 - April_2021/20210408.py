@@ -21,15 +21,15 @@ class Solution:
             "9": ['w', 'x', 'y', 'z']
         }
         combinations = []
-        for index in range(len(digits) - 1):
-            for value1 in digit_to_letter_dict[digits[index]]:
-                combinations2 = []
-                if len(combinations) == 0:
-                    combinations = digit_to_letter_dict[digits[index]]
-                for value2 in range(len(combinations)):
-                    comb = value1 + combinations[value2]
-                    combinations2.append(comb)
-
+        for index in range(len(digits)):
+            combinations2 = []
+            if len(combinations) == 0:
+                combinations = list(digit_to_letter_dict[digits[index]])
+            else:
+                for value1 in range(len(combinations)):
+                    for value2 in digit_to_letter_dict[digits[index]]:
+                        comb = combinations[value1] + value2
+                        combinations2.append(comb)
                 combinations = combinations2
 
         return combinations
