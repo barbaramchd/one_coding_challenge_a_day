@@ -22,7 +22,6 @@ class Solution:
 
         characters_replaced = ""
         not_replaced = ""
-
         for i in index_replaced:
             characters_replaced += str[i]
 
