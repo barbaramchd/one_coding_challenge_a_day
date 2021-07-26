@@ -1,23 +1,52 @@
 """
-58. Length of Last Word
+13. Roman to Integer
+Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
 
-Given a string s consists of some words separated by spaces, return the length of the last word in the string. If the last word does not exist, return 0.
+Symbol       Value
+I             1
+V             5
+X             10
+L             50
+C             100
+D             500
+M             1000
+For example, 2 is written as II in Roman numeral, just two one's added together. 12 is written as XII, which is simply X + II. The number 27 is written as XXVII, which is XX + V + II.
 
-A word is a maximal substring consisting of non-space characters only.
+Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:
+
+I can be placed before V (5) and X (10) to make 4 and 9.
+X can be placed before L (50) and C (100) to make 40 and 90.
+C can be placed before D (500) and M (1000) to make 400 and 900.
+Given a roman numeral, convert it to an integer.
 """
-
-
 class Solution:
-    def lengthOfLastWord(self, s: str) -> int:
-        # split the string by the empty spaces
-        # and store every word in a list
-        s_list = list(s.split(" "))
+    def romanToInt(self, s: str) -> int:
+        dict_roman_int = {
+            "I": 1,
+            "V": 5,
+            "X": 10,
+            "L": 50,
+            "C": 100,
+            "D": 500,
+            "M": 1000
+        }
 
-        # loop through the list backwards
-        for word in range(len(s_list) - 1, -1, -1):
-            # if there is a word (not empty space)
-            # return the length of that word
-            if s_list[word]:
-                return len(s_list[word])
+        count = 0
 
-        return 0
+        # loop through the string
+        for roman in range(len(s)):
+            # check if the roman digit is in dict
+            if s[roman] in dict_roman_int:
+                # if it is not the last digit in the string
+                if roman < len(s) - 1:
+                    # check if the roman digit is smaller than the next one
+                    # if so add the negative value of that roman digit
+                    if dict_roman_int[s[roman]] < dict_roman_int[s[roman + 1]]:
+                        count += (-dict_roman_int[s[roman]])
+                    # else, add the positive value of that roman digit
+                    else:
+                        count += dict_roman_int[s[roman]]
+                # if it is the last digit of the string, just add the roman digit
+                else:
+                    count += dict_roman_int[s[roman]]
+        return count
